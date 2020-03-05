@@ -2,6 +2,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from math import pi, cos, sin
 import pandas as pd
+from scipy import optimize as opt
 
 #constants
 d8 = 1.55125 * (10**(-10))
@@ -49,34 +50,82 @@ tmpoints = []
 for i in range(5000):
     tm = (i+1)*(10**6)
     tmpoints.append(tm)
-
 for t in  tmpoints:
     px = 1 / (np.exp(d8*t)-1)
     py = 1/ur*(np.exp(d5*t)-1)/(np.exp(d8*t)-1)
     tr_x.append(px)
     tr_y.append(py)
 
+
+
+
+
+
 #reading csv
-df = pd.read_csv("20200215_twplot.csv")
+filename = input("csvfile\n@")
+#df = pd.read_csv("20200215_twplot.csv")
+df = pd.read_csv(filename)
 x = df["238U/206Pb"]
 y = df["207Pb/206Pb"]
 x_err = df["error"]
 y_err = df["error.1"]
 
-
+#draw tera-wasserburg concordia diagram
 print(df["core_rim"])
 for i in range(len(x)):
     if df["core_rim"][i] == "core":
         ellipse_blue(x[i],y[i],x_err[i],y_err[i],0)
-    elif:
-        df["core_rim"][i] == "rim":
+    elif df["core_rim"][i] == "rim":
         ellipse_red(x[i],y[i],x_err[i],y_err[i],0)
     else:
-        ellipse_blue(x[i],y[i],x_err[i],y_err[i],0)
+        continue
+
+#regression line
+wx = (x_err)**(-2)
+wy = (y_err)**(-2)
+ymean = np.sum(y)/len(y)
+xmean = np.sum(x)/len(x)
+b_init = np.sum((y-ymean)*(x-xmean))/np.sum((x-xmean)*(x-xmean))
+def z(b):
+    return (wx*wy)/((b**2)*wy+wx-2*b*r*np.sqrt(wx*wy))
+
+def x_ave(b):
+    return np.sum(z(b)*x)/np.sum(z(b))
+def y_ave(b):
+    return np.sum(z(b)*y)/np.sum(z(b))
+def u(b):
+    return x - x_ave(b)
+def v(b):
+    return y - y_ave(b)
+alpha = np.sqrt(wx*wy)
+r = 0
+def calc(b):
+    return (b**2)*np.sum((z(b)**2)*(u(b)*v(b)/wx-r*(u(b)**2)/alpha))+b*np.sum((z(b)**2)*(u(b)**2/wy-v(b)**2/wx))-np.sum((z(b)**2)*(u(b)*v(b)/wy-r*(v(b)**2)/alpha))
+b_reg = opt.fsolve(calc,b_init)
+a = y_ave(b_reg)-b_reg*x_ave(b_reg)
+print(a, b_reg)
+def tw(x):
+    return 1/137.88*((1/x+1)**(d5/d8)-1)*x
+def reg(x):
+    return b_reg*x+a
+def intercept(x):
+    return reg(x)-tw(x)
+xc = opt.fsolve(intercept,60)
+age = np.log(1/xc+1)/d8
+print(age/1e+6)
+
+x_reg = np.arange(0, 100, 0.1)
+y_reg = []
+
+for item in x_reg:
+    y_reg.append(item*b_reg+a)
+
+
 
 
 plt.plot(tr_x, tr_y, color = "black")
-plt.xlim(0, 80)
+plt.plot(x_reg, y_reg)
+plt.xlim(0, 70)
 plt.ylim(0, 1)
 plt.xlabel('$\mathrm{^{238}U/^{206}Pb}$')
 plt.ylabel('$\mathrm{^{207}Pb/^{206}Pb}$')
