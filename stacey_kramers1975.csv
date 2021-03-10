@@ -1,0 +1,38 @@
+﻿Number,Sample,locality,206Pb/204Pb,207Pb/204Pb,208Pb/204Pb,Accepted age
+1,galena,Berberton,12.461,14.077,32.285,3230
+2,galena,manitouwadge,13.211,14.401,33.069,2700
+3,galena,Geneva Lake,14.002,14.87,33.716,2600
+4,galena,"Cobalt, Ontario",14.87,15.16,34.44,2170
+5,galena,Mount Isa,16.111,15.46,35.847,1660
+6,galena,Broken Hill,16.007,15.397,35.675,1660
+7,galena,"Balmat, New York",16.935,15.505,36.423,1060
+8,galena,Captain's Flat,18.05,15.619,38.145,420
+9,galena,Cobar,18.082,15.624,38.125,410
+10,galena,Bathurst,18.204,15.655,38.122,460
+11,galena,Halls Peak,18.35,15.607,38.347,240
+12,galena,"Kosaka, Kuroko, Japan",18.463,15.589,38.623,30
+13,galena,White island,18.757,15.603,38.644,0
+1,feldspar,Kaap Valley,12.73,14.09,32.32,3230
+2,feldspar,"Salisbury Kop, Berberton",12.75,14.07,32.22,3230
+3,feldspar,"Granite Mtns, Wyoming",13.986,15.085,34.038,2950
+4,feldspar,"Manitouwadge, Ontario",13.59,14.72,33.53,2700
+5,feldspar,"Preissac-Lacorne Batholith, Quebec",13.28,14.53,33.43,2660
+6,feldspar,"Peninsular Gneiss, Mysore",13.16,14.5,35.08,2750
+7,feldspar,Minnesota,13.58,14.67,33.42,2700
+8,feldspar,"Beartooth Mtns, Montana",14.11,14.99,33.66,2750
+9,feldspar,"wind River Mtns, Wyoming",14.01,14.93,33.68,2630
+10,feldspar,"Churchill Province, Saskatchewan",15.04,15.12,34.9,1890
+11,feldspar,"Churchill Province, Saskatchewan",15.74,15.37,35.57,1890
+12,feldspar,"Churchill Province, Montana",16.15,15.65,36.36,1890
+13,feldspar,"Black Hills, Dakota",16.18,15.51,35.81,1700
+14,feldspar,"Tomkinson Range, Australia",16.82,15.57,36.6,1250
+15,feldspar,"St. Kevin Batholiith, Colorado",16.61,15.58,36.61,1480
+16,feldspar,"Tardol, Norway",17.44,15.62,37.16,950
+17,feldspar,"Essonville, Ontario",16.81,15.28,36.02,1000
+18,feldspar,"Pikes Peak Batholiths, Colorado",16.64,15.35,36.58,1040
+19,feldspar,"Pikes Peak Batholiths, Colorado",16.9,15.47,36.73,1040
+20,feldspar,"Balmat, New York",17.1,15.51,36.64,1060
+21,feldspar,"Adirondak Mtns, New York",16.07,15.51,36.58,1140
+22,feldspar,Maryland,18.11,15.66,38.5,450
+23,feldspar,"Amelia Courthouse, Verginia",18.17,15.63,38.39,350
+1,Canyon Diablo troilite,-,9.307,10.294,29.476,4570
